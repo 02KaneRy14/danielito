@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Memoria — Danielito</title>
+
+  <!-- Fuente gótica -->
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --stone:#d9d9d9;
+      --stone-dark:#bdbdbd;
+      --ink:#111;
+      --accent:#000;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "UnifrakturCook", "Times New Roman", Times, serif;
+      background: linear-gradient(180deg, #060606 0%, #0f0f0f 50%);
+      color: #eee;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+      box-sizing:border-box;
+    }
+
+    .tomb {
+      width: min(920px, 92%);
+      max-width:920px;
+      background:
+        radial-gradient(1200px 400px at 50% 0%, rgba(255,255,255,0.03), transparent 25%),
+        linear-gradient(180deg, var(--stone) 0%, var(--stone-dark) 100%);
+      border-radius: 48% 48% 14px 14px / 46% 46% 18px 18px;
+      padding: 36px;
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.65),
+        inset 0 2px 0 rgba(255,255,255,0.06),
+        inset 0 -6px 14px rgba(0,0,0,0.18);
+      border: 1px solid rgba(0,0,0,0.25);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:22px;
+      position:relative;
+      overflow:visible;
+    }
+
+    .tomb::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:-38px;
+      width:80%;
+      height:56px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+      border-radius:8px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+    }
+
+    /* 💀 FIX: el video ya no se sale */
+    .video-frame{
+      width:100%;
+      max-width:760px;
+      background: linear-gradient(180deg, #e9e9e9, #cfcfcf);
+      padding:12px;
+      border-radius:12px;
+      box-shadow: inset 0 3px 0 rgba(255,255,255,0.6),
+                  inset 0 -6px 10px rgba(0,0,0,0.12),
+                  0 6px 18px rgba(0,0,0,0.5);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden; /* ← evita desbordes */
+    }
+
+    video {
+      width:100%;
+      height:auto;
+      object-fit:cover; /* ← mantiene el encuadre */
+      display:block;
+      border-radius:6px;
+      filter: grayscale(100%) contrast(1.05) brightness(0.95);
+      background:#000;
+    }
+
+    .inscription {
+      width:100%;
+      max-width:760px;
+      text-align:center;
+      padding: 16px 20px 28px;
+      font-size: 20px;
+      line-height:1.35;
+      color: #0b0b0b;
+      text-shadow:
+         0 1px 0 rgba(255,255,255,0.65),
+         0 -2px 6px rgba(0,0,0,0.25);
+      border-radius: 6px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .inscription p{
+      margin:0;
+      color: #0b0b0b;
+      font-size: clamp(16px, 1.8vw, 22px);
+    }
+
+    .name {
+      font-size: clamp(34px, 5.2vw, 58px);
+      color: #040404;
+      text-shadow:
+        0 2px 0 rgba(255,255,255,0.6),
+        0 -6px 12px rgba(0,0,0,0.3);
+      margin: 6px 0 0 0;
+    }
+
+    .ornament{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      align-items:center;
+      margin-bottom:4px;
+      color:#0a0a0a;
+      font-size:18px;
+    }
+
+    .muted { color:#1b1b1b; }
+
+    .notes {
+      margin-top:18px;
+      font-family: system-ui;
+      font-size:12px;
+      color:#999;
+      text-align:center;
+    }
+
+    .play-hint{
+      margin-top:8px;
+      font-size:13px;
+      color:#111;
+      background: rgba(255,255,255,0.85);
+      padding:8px 12px;
+      border-radius:8px;
+      display:inline-block;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      cursor:pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <main class="tomb">
+      <div class="ornament">
+        <span>✝︎</span>
+        <span style="opacity:0.6">✠</span>
+        <span>✝︎</span>
+      </div>
+
+      <div class="video-frame">
+        <video id="memVideo" playsinline controls preload="metadata" poster="poster.jpg">
+          <source src="kanesito.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="inscription">
+        <div class="name">aca llace </div>
+         <div class="name">danielito</div>
+        <p class="muted">
+        murio empalado por 7 negritos igual qe el,  le gustava jugar bloodcito y le deciam el mas capito, descanza em pas negrito ermozo, yo ce que estas en el cielo de los negritos difrutando de jugar bloodcito y cromar pitos
+        </p>
+      </div>
+
+      <div class="notes">
+        <div class="play-hint" onclick="togglePlay()">Reproducir / Pausar</div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const v = document.getElementById('memVideo');
+    function togglePlay(){
+      if(v.paused){ v.play(); }
+      else v.pause();
+    }
+  </script>
+</body>
+</html>
